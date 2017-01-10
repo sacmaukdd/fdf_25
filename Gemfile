@@ -11,6 +11,7 @@ gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
 gem "devise"
 gem "config"
+gem "bootstrap-sass", "3.3.6"
 
 group :development, :test do
   gem "byebug", platform: :mri
