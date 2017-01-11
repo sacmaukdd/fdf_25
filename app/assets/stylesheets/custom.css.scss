@@ -1,6 +1,9 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+ul li{
+  list-style:none;
+}
 ul.dropdown-cart{
   min-width: 250px;
 }
@@ -75,10 +78,17 @@ ul.footer_nav li a {
 }
 .sign-up{
   float: right;
+  margin-right: 10px;
 }
 .log-in{
   float: right;
 }
 .dropdown{
   float: right;
+}
+.index{
+  margin-top: 70px;
+}
+.clr{
+  clear: both;
 }

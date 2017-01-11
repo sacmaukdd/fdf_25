@@ -12,6 +12,10 @@ gem "jbuilder", "~> 2.5"
 gem "devise"
 gem "config"
 gem "bootstrap-sass", "3.3.6"
+gem "omniauth"
+gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
+gem "omniauth-twitter"
 
 group :development, :test do
   gem "byebug", platform: :mri
