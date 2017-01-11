@@ -12,3 +12,8 @@ en:
   account: "Account"
   signup: "Sign up"
   log_in: "Log in"
+  edit: "Edit"
+  minimum: "characters minimum"
+  update: "Update"
+  sign_up: "Sign up"
+  waiting: "Currently waiting confirmation for"

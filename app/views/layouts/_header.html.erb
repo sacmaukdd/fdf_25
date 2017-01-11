@@ -4,20 +4,24 @@
         <%= link_to t("title"), root_path, class: "navbar-brand" %>
     </div>
     <ul class="header">
-      <li class="dropdown">
-        <%= link_to t("account"), "#", class: "dropdown-toggle",
-          data: {toggle: "dropdown"}%>
-        <ul class="dropdown-menu">
-          <li class="item-link"><%= link_to t("profile"), "#" %></li>
-          <li class="item-link"><%= link_to t("settings"), "#" %></li>
-          <li class="divider"></li>
-          <li class="item-link">
-            <%= link_to t("log_out"), "#", method: "delete" %>
-          </li>
-        </ul>
-      </li>
-      <li class="log-in"><%= link_to t("log_in"), "#" %></li>
-      <li class="sign-up"><%= link_to t("signup"), "#" %></li>
+      <% if user_signed_in? %>
+        <li class="dropdown">
+          <%= link_to t("account"), "#", class: "dropdown-toggle",
+            data: {toggle: "dropdown"}%>
+          <ul class="dropdown-menu">
+            <li class="item-link"><%= link_to t("profile"), "" %></li>
+            <li class="item-link"><%= link_to t("settings"), edit_user_registration_path %></li>
+            <li class="divider"></li>
+            <li class="item-link">
+              <%= link_to t("log_out"), destroy_user_session_path, method: "delete" %>
+            </li>
+          </ul>
+        </li>
+      <% else %>
+        <li class="log-in"><%= link_to t("log_in"), new_user_session_path %></li>
+        <li class="sign-up"><%= link_to t("signup"), new_user_registration_path %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </nav>
