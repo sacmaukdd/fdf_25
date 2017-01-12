@@ -16,6 +16,7 @@ gem "omniauth"
 gem "omniauth-facebook"
 gem "omniauth-google-oauth2"
 gem "omniauth-twitter"
+gem "will_paginate", "3.1.0"
 
 group :development, :test do
   gem "byebug", platform: :mri
