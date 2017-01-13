@@ -1,31 +1,33 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <%= link_to t("title"), root_path, class: "navbar-brand" %>
-    </div>
-    <ul class="header">
-      <% if user_signed_in? %>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="navbar-header">
+    <%= link_to t("title"), root_path, class: "navbar-brand" %>
+  </div>
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <% if user_signed_in? %>
+      <ul class="nav navbar-nav">
         <% if current_user.admin? %>
-          <%= link_to t("categories"), admin_categories_path %>
-          <%= link_to t("products"), admin_products_path %>
+          <li><%= link_to t("categories"), admin_categories_path %></li>
+          <li><%= link_to t("products"), admin_products_path %></li>
         <% end %>
-        <li class="dropdown">
-          <%= link_to t("account"), "#", class: "dropdown-toggle",
-            data: {toggle: "dropdown"}%>
-          <ul class="dropdown-menu">
-            <li class="item-link"><%= link_to t("profile"), "" %></li>
-            <li class="item-link"><%= link_to t("settings"), edit_user_registration_path %></li>
-            <li class="divider"></li>
-            <li class="item-link">
-              <%= link_to t("log_out"), destroy_user_session_path, method: "delete" %>
-            </li>
-          </ul>
-        </li>
-      <% else %>
-        <li class="log-in"><%= link_to t("log_in"), new_user_session_path %></li>
-        <li class="sign-up"><%= link_to t("signup"), new_user_registration_path %>
-        </li>
-      <% end %>
-    </ul>
+      </ul>
+      <li class="dropdown">
+        <%= link_to t("account"), "#", class: "dropdown-toggle",
+          data: {toggle: "dropdown"}%>
+        <ul class="dropdown-menu">
+          <li class="item-link"><%= link_to t("profile"), "" %></li>
+          <li class="item-link"><%= link_to t("settings"),
+            edit_user_registration_path %></li>
+          <li class="divider"></li>
+          <li class="item-link">
+            <%= link_to t("log_out"), destroy_user_session_path,
+              method: "delete" %>
+          </li>
+        </ul>
+      </li>
+    <% else %>
+      <li class="log-in"><%= link_to t("log_in"), new_user_session_path %></li>
+      <li class="sign-up"><%= link_to t("signup"), new_user_registration_path %>
+      </li>
+    <% end %>
   </div>
 </nav>
