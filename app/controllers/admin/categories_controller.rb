@@ -1,9 +1,8 @@
-class Admin::CategoriesController < ApplicationController
-  before_action :load_category, only: [:edit, :update, :destroy]
+class Admin::CategoriesController < Admin::BaseController
+  load_and_authorize_resource
 
   def index
-    @categories = Category.order_date_desc.paginate page: params[:page],
-      per_page: Settings.per_page
+    @categories = Category.order_date_desc.page(params[:page]).per Settings.per_page
     @category = Category.new
   end
 
@@ -46,13 +45,5 @@ class Admin::CategoriesController < ApplicationController
   private
   def category_params
     params.require(:category).permit :name
-  end
-
-  def load_category
-    @category = Category.find_by id: params[:id]
-    unless @category
-      flash[:danger] = t "category_not_found"
-      redirect_to request.referrer
-    end
   end
 end
