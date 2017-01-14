@@ -1,10 +1,17 @@
 class ProductsController < ApplicationController
+  load_and_authorize_resource
+  skip_authorize_resource only: [:show, :destroy]
+
   def show
-    @product = Product.find_by id: params[:id]
-    unless @product
-      flash[:danger]= t "product_not_found"
-      redirect_to request.referrer
-    end
     @comment = Comment.new
+  end
+
+  def destroy
+    if @product.destroy
+      flash[:success] = t "del_complete"
+    else
+      flash[:danger] = t "delete_error"
+    end
+      redirect_to suggests_path
   end
 end

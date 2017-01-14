@@ -1,0 +1,4 @@
+$('#product').html('<%= j render partial: "shared/product", locals: {products: @products} %>');
+$('#select').click(function(){
+  $('#form_suggest').submit();
+});

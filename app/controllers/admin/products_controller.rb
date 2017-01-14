@@ -3,7 +3,21 @@ class Admin::ProductsController < Admin::BaseController
   before_action :load_category, only: [:new, :edit]
 
   def index
-    @products = Product.order_alphabet.page(params[:page]).per Settings.per_page
+    if params[:select]
+      if params[:select] == Settings.all
+        @products = Product.order_alphabet.page(params[:page])
+          .per Settings.per_page
+      elsif params[:select] == Settings.suggest
+        @products = Product.get_product_by_suggest.order_alphabet
+          .page(params[:page]).per Settings.per_page
+      else params[:select] == Settings.admin
+        @products = Product.get_product_by_admin.order_alphabet
+          .page(params[:page]).per Settings.per_page
+      end
+      respond_to do |format|
+        format.js
+      end
+    end
   end
 
   def new
@@ -26,13 +40,19 @@ class Admin::ProductsController < Admin::BaseController
     @category = Category.find_by id: @product.category_id
     unless @category
       flash[:danger] = t "category_not_found"
-      redirect_to request.referrer
     end
     render "_form_product"
   end
 
   def update
-    if @product.update_attributes product_params
+    if params[:check_suggest].to_i == Settings.check_suggest
+      @product.update temp: Settings.accept
+      @products = Product.get_product_by_suggest.order_alphabet
+        .page(params[:page]).per Settings.per_page
+      respond_to do |format|
+        format.js
+      end
+    elsif @product.update_attributes product_params
       flash[:success] = t "update_product_success"
       redirect_to admin_products_path
     else
@@ -53,7 +73,7 @@ class Admin::ProductsController < Admin::BaseController
   private
   def product_params
     params.require(:product).permit :name, :description, :price, :classify,
-      :category_id, :picture
+      :category_id, :picture, :temp
   end
 
   def load_category

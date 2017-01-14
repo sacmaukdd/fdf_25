@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <% url = "" %>
+    <% if current_page? new_suggest_path %>
+      <% url = suggests_path %>
+    <% else %>
+      <% url = suggest_path %>
+    <% end %>
+    <%= form_for @product, url: url do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label :price %>
+      <%= f.number_field :price, class: "form-control" %>
+
+      <%= f.label :picture %>
+      <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png" %>
+
+      <%= f.hidden_field :id_user_suggest, value: current_user.id %>
+
+      <%= f.submit t("suggest"), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
