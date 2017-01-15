@@ -1,0 +1,9 @@
+<div class="avatar-show">
+  <%= image_tag @user.avatar %>
+</div>
+<div class="user-show">
+  <p><%= t "name" %>: <%= @user.username %></p>
+  <p><%= t "email" %><%= @user.email %></p>
+  <p><%= t "phone" %><%= @user.phone %></p>
+  <p><%= t "address" %><%= @user.address %></p>
+</div>
