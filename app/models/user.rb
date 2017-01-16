@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :activities, dependent: :destroy
   has_many :suggests, dependent: :destroy
-  has_many :rates, dependent: :destroy
 
   enum role: [:user, :admin]
+  ratyrate_rater
 end
