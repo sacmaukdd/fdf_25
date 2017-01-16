@@ -1,0 +1,15 @@
+<% @users.each do |user| %>
+  <div class="user">
+    <div class="avatar-index">
+      <%= image_tag user.avatar %>
+    </div>
+    <div class="name-user-index">
+      <%= link_to user.username, user %>
+    </div>
+    <%= t "space" %>
+    <%= link_to t("delete"), admin_user_path(user.id), method: :delete,
+      data: {confirm: t("sure")} %>
+    <div class="clr"></div>
+  </div>
+<% end %>
+<%= paginate @users, theme: "twitter-bootstrap-3" %>
