@@ -1,0 +1,16 @@
+<% product.comments.each do |comment| %>
+  <div id="comment-content">
+    <div class="avatar-comment"><%= image_tag comment.user.avatar %></div>
+    <div class="cmt-content">
+      <p><%= link_to comment.user.username, comment.user %> :
+      <%= comment.content %> </p>
+      <span><%= time_ago_in_words comment.created_at %></span> ago.
+      <% if current_user.is_user? comment.user %>
+        <%= link_to t("edit"), edit_comment_path(comment.id) %>
+        <%= link_to t("delete"), comment_path(comment), method: :delete,
+          data: {confirm: t("sure")}%>
+      <% end %>
+    </div>
+  </div>
+  <div class="clr"></div>
+<% end %>
