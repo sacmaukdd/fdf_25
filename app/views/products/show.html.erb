@@ -10,3 +10,8 @@
 <p><%= @product.price %> <%= t "dollar" %></p>
 <%= @product.description %>
 </div>
+<div class="clr"></div>
+<div class="rating">
+  <h2><%= t "rating" %></h2>
+  <%= rating_for @product, t("rate"), star: Settings.star, enable_half: true %>
+</div>
