@@ -24,6 +24,7 @@ gem "ransack"
 gem "bootstrap-kaminari-views"
 gem "pry"
 gem "cancancan", "~> 1.10"
+gem "ratyrate"
 
 group :development, :test do
   gem "byebug", platform: :mri
