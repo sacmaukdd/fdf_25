@@ -5,5 +5,6 @@ class ProductsController < ApplicationController
       flash[:danger]= t "product_not_found"
       redirect_to request.referrer
     end
+    @comment = Comment.new
   end
 end

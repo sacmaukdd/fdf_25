@@ -8,6 +8,9 @@ class Ability
       cannot :update, User
     else
       can :read, :all
+      can :create, Comment
+      can :update, Comment
+      can :destroy, Comment
     end
   end
 end

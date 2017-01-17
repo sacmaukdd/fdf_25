@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   end
   resources :products, only: :show
   resources :users, only: :show
+  resources :comments
 end

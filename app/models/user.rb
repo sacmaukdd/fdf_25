@@ -11,4 +11,8 @@ class User < ApplicationRecord
 
   enum role: [:user, :admin]
   ratyrate_rater
+
+  def is_user? user
+    self == user
+  end
 end

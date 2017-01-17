@@ -16,3 +16,6 @@
   <h2><%= t "rating" %></h2>
   <%= rating_for @product, t("rate"), star: Settings.star, enable_half: true %>
 </div>
+<div class="comment">
+  <%= render partial: "shared/comment", locals: {product: @product} %>
+</div>
