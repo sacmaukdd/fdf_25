@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     resources :products
     resources :users, only: [:destroy, :index]
   end
-  resources :products, only: :show
+  resources :products do
+    collection do
+      match "search" => "staticpages#index", via: [:get, :post], as: :search
+    end
+  end
   resources :users, only: :show
   resources :comments
 end

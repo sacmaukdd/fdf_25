@@ -73,3 +73,5 @@ en:
   comment_update: "Comment update"
   comment_not_update: "Comment not update"
   comment_not_delete: "Comment not delete"
+  price_between: "Price Between"
+  and: "And"
