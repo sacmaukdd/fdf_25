@@ -26,6 +26,7 @@ gem "pry"
 gem "cancancan", "~> 1.10"
 gem "ratyrate"
 gem "social-share-button"
+gem "ransack"
 
 group :development, :test do
   gem "byebug", platform: :mri
