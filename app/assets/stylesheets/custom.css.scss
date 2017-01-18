@@ -167,3 +167,30 @@ table th, table td {
   float: left;
   margin-left: 20px;
 }
+.image-cart img{
+  width: 150px;
+  height: 100px;
+}
+.quantity{
+  width: 70px;
+}
+.header-menu-number {
+  line-height: 15px;
+  font-weight: 700;
+  background: #e64c65;
+  border-radius: 100%;
+  -webkit-transition: all .3s linear;
+  transition: all .3s linear;
+  color: #fff;
+  text-decoration: none;
+  width: 25px;
+  height: 25px;
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#shopping-cart{
+  float: right;
+  margin-right: 20px;
+  margin-top: 15px;
+}

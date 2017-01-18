@@ -1,0 +1,9 @@
+<%= link_to carts_path do %>
+  <i class="glyphicon glyphicon-shopping-cart"></i>
+  <%= t "cart" %>
+  <% unless session[:cart].nil? %>
+    <i class="header-menu-number" href="#4">
+      <%= session[:cart].size %>
+    </i>
+  <% end %>
+<% end %>

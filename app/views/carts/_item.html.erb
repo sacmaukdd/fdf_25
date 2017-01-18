@@ -1,0 +1,34 @@
+<% products.each do |product, quantity| %>
+  <% if product %>
+    <tr>
+      <td class="center">
+        <%= link_to product do %>
+          <div class="image-cart">
+            <%= image_tag product.picture, alt: product.name,
+              class: "product-thumbnail", size: Settings.size_cart %>
+            <%= product.name %>
+          </div>
+        <% end %>
+      </td>
+      <td class="center"><%= quantity %></td>
+      <td class="center"><%= number_to_currency product.price,
+        precision: Settings.precision %></td>
+      <td class="center"><%= number_to_currency Accounting.item_total_cost(product.price,
+        quantity), precision: Settings.precision %></td>
+      <td class="center">
+        <%= form_tag carts_path(index_page: Settings.index_page), remote: true do %>
+          <%= hidden_field_tag :product_id, product.id %>
+          <%= number_field_tag :quantity_change, Settings.quantity_min,
+            class: "quantity" %>
+          <%= button_tag class: "btn btn-primary", remote: true do %>
+            <i class="glyphicon glyphicon-ok-sign"></i>
+          <% end %>
+        <% end %>
+      </td>
+      <td class="center">
+        <%= link_to t("delete"), cart_path(product.id), method: :delete,
+          data: {confirm: t("sure")} %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>
