@@ -9,6 +9,8 @@
           <li><%= link_to t("categories"), admin_categories_path %></li>
           <li><%= link_to t("products"), admin_products_path %></li>
           <li><%= link_to t("users"), admin_users_path %></li>
+        <% else %>
+          <li><%= link_to t("suggest"), suggests_path(current_user) %></li>
         <% end %>
       </ul>
       <li class="dropdown">

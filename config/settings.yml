@@ -8,3 +8,11 @@ precision: 0
 value_default: 1
 quantity_min: 1
 index_page: 1
+all: "All"
+admin: "Admin"
+suggest: "Suggest"
+check_suggest: 1
+accept: 0
+approve: 1
+accept_text: "accept"
+approve_text: "approve"

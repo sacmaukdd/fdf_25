@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :comments
   resources :carts
+  resources :products, only: [:show, :destroy]
+  resources :suggests
 end
