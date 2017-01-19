@@ -1,0 +1,20 @@
+<%= form_for @order do |f| %>
+  <%= render "shared/error_messages", object: @order %>
+  <div class="control-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, value: current_user.username, class: "form-control" %>
+  </div>
+  <div class="control-group">
+    <%= f.label :phone %>
+    <%= f.text_field :phone, value: current_user.phone,
+      class: "form-control" %>
+  </div>
+  <div class="control-group">
+    <%= f.label :address %>
+    <%= f.text_field :address, value: current_user.address, class: "form-control" %>
+  </div>
+  <div class="form-actions">
+    <%= f.submit %>
+    <%= link_to t("btn_cancel"), "#", class: "btn btn-default" %>
+  </div>
+<% end %>

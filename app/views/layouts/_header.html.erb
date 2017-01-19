@@ -11,6 +11,7 @@
           <li><%= link_to t("users"), admin_users_path %></li>
         <% else %>
           <li><%= link_to t("suggest"), suggests_path(current_user) %></li>
+          <li><%= link_to t("orders"), admin_orders_path %></li>
         <% end %>
       </ul>
       <li class="dropdown">
@@ -27,6 +28,9 @@
           </li>
         </ul>
       </li>
+      <div class="my-order">
+        <li><%= link_to t("my_order"), orders_path %></li>
+      </div>
       <div id="shopping-cart">
         <%= render "carts/carts_header" %>
       </div>

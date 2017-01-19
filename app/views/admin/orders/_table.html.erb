@@ -1,0 +1,35 @@
+<table>
+  <tr>
+      <th><%= t "user" %></th>
+      <th><%= t "date" %></th>
+      <th><%= t "total_price" %></th>
+      <th><%= t "phone" %></th>
+      <th><%= t "address" %></th>
+      <th colspan="3"><%= t "action" %></th>
+  </tr>
+  <% waiting_orders.each do |waiting_order| %>
+    <tr>
+      <td>
+        <p class="name-order"><%= waiting_order.name %></p>
+        <div class="image-order">
+          <%= image_tag waiting_order.user.avatar %>
+        </div>
+      </td>
+      <td class="date-order"><%= waiting_order.created_at %></td>
+      <td><%= number_to_currency waiting_order.total_price %></td>
+      <td><%= waiting_order.phone %></td>
+      <td><%= waiting_order.address %></td>
+      <td><%= link_to t("detail"), order_path(waiting_order.id) %></td>
+      <td>
+        <%= link_to t("accept"), admin_order_path(waiting_order,
+          value: :accepted), method: :put %>
+      </td>
+      <td>
+        <%= link_to t("reject"), admin_order_path(waiting_order,
+          value: :rejected), method: :put %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+

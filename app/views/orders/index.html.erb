@@ -1,0 +1,25 @@
+<table>
+  <caption><h2 class="center"><%= t "my_order" %></h2></caption>
+  <tr>
+    <th><%= t "date_order" %></th>
+    <th><%= t "quantity" %></th>
+    <th><%= t "total_price" %>
+    <th><%= t "status" %></th>
+    <th colspan="2"><%= t "action" %></th>
+  </tr>
+  <% @orders.each do |order| %>
+    <tr>
+      <td class="date-order"><%= order.created_at %></td>
+      <td><%= order.order_items.size %></td>
+      <td><%= number_to_currency order.total_price %></td>
+      <td><%= order.status %></td>
+      <td>
+        <%= link_to t("detail"), order_path(order.id) %>
+      </td>
+      <td>
+        <%= link_to t("delete"), order_path(order), method: :delete,
+          data: {confirm: t("sure")} %>
+      </td>
+    </tr>
+  <% end %>
+</table>

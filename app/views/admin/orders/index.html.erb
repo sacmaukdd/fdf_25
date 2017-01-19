@@ -1,0 +1,42 @@
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active">
+    <%= link_to t("waiting"), "#waiting", data: {toggle: "tab"} %>
+  <li role="presentation">
+    <%= link_to t("accepted"), "#accepted", data: {toggle: "tab"} %>
+  </li>
+  <li role="presentation">
+    <%= link_to t("rejected"), "#rejected", data: {toggle: "tab"} %>
+  </li>
+</ul>
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="waiting">
+    <div class="row">
+      <table class="table table-sub table-striped table-hover">
+        <%= render partial: "table", locals: {waiting_orders: @waiting_orders} %>
+      </table>
+      <div class="paginate">
+        <%= paginate @waiting_orders, theme: "twitter-bootstrap-3" %>
+      </div>
+    </div>
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="accepted">
+    <div class="row">
+      <table class="table table-sub table-striped table-hover">
+        <%= render partial: "table", locals: {waiting_orders: @accepted_orders} %>
+      </table>
+      <div class="paginate">
+        <%= paginate @accepted_orders, theme: "twitter-bootstrap-3" %>
+      </div>
+    </div>
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="rejected">
+    <div class="row">
+      <table class="table table-sub table-striped table-hover">
+        <%= render partial: "table", locals: {waiting_orders: @rejected_orders} %>
+      </table>
+      <div class="paginate">
+        <%= paginate @rejected_orders, theme: "twitter-bootstrap-3" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, PictureUploader
 
-  has_many :oders, dependent: :destroy
+  has_many :orders, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :activities, dependent: :destroy
   has_many :suggests, dependent: :destroy

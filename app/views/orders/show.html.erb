@@ -1,0 +1,22 @@
+<table>
+  <caption><h2 class="center"><%= t "all_order_item" %></h2></caption>
+  <tr>
+    <th><%= t "product" %></th>
+    <th><%= t "quantity" %></th>
+    <th><%= t "price" %></th>
+    <th><%= t "total_price" %>
+  </tr>
+  <% @order_items.each do |order_item| %>
+    <tr>
+      <td>
+        <p class="name-order"><%= order_item.product.name %></p>
+        <div class="image-order">
+          <%= image_tag order_item.product.picture %>
+        </div>
+      </td>
+      <td><%= order_item.quantity %></td>
+      <td><%= number_to_currency order_item.price %></td>
+      <td><%= number_to_currency order_item.total_price %></td>
+    </tr>
+  <% end %>
+</table>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :products
     resources :users, only: [:destroy, :index]
+    resources :orders
   end
   resources :products do
     collection do
@@ -17,4 +18,5 @@ Rails.application.routes.draw do
   resources :carts
   resources :products, only: [:show, :destroy]
   resources :suggests
+  resources :orders
 end

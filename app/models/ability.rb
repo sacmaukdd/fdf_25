@@ -11,6 +11,8 @@ class Ability
       can :create, Comment
       can :update, Comment
       can :destroy, Comment
+      can :create, Order
+      can :destroy, Order
     end
   end
 end
