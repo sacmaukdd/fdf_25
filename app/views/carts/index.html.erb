@@ -1,0 +1,43 @@
+<div class="wrapper">
+  <div class="col-md-9 list-cart">
+    <table>
+      <thead>
+        <th class="center"><%= t "product" %></th>
+        <th class="center"><%= t "quantity" %></th>
+        <th class="center"><%= t "price" %></th>
+        <th class="center"><%= t "total_price" %></th>
+        <th class="center"><%= t "add_more" %></th>
+        <th class="center"><%= t "option" %></th>
+      </thead>
+      <tbody id="items-cart">
+        <% if @products.any? %>
+          <%= render partial: "carts/item", locals: {products: @products} %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-3">
+    <div class="row">
+      <div class="col-md-7">
+        <h3><%= t ".lbl_total" %></h3>
+      </div>
+      <div class="col-md-5">
+        <h3 class="total-price">
+          <%= number_to_currency Accounting.cart_total_cost(@products),
+            precision: Settings.precision %>
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 center">
+        <% if user_signed_in? %>
+          <%= link_to t("btn_order"), "#",
+            class: "btn btn-success" %>
+        <% end %>
+      </div>
+      <div class="col-md-6 center">
+        <%= link_to t("btn_cancel"), new_cart_path, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>

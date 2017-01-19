@@ -25,6 +25,9 @@
           </li>
         </ul>
       </li>
+      <div id="shopping-cart">
+        <%= render "carts/carts_header" %>
+      </div>
     <% else %>
       <li class="log-in"><%= link_to t("log_in"), new_user_session_path %></li>
       <li class="sign-up"><%= link_to t("signup"), new_user_registration_path %>

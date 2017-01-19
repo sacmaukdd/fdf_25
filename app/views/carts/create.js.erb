@@ -1,0 +1,5 @@
+<% if params[:index_page].to_i == Settings.index_page %>
+  $("#items-cart").html('<%= j render partial: "carts/item", locals: {products: @products} %>');
+<% else %>
+  $('#shopping-cart').html('<%= j render "carts/carts_header" %>');
+<% end %>
