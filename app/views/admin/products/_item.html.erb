@@ -1,0 +1,47 @@
+<table>
+  <tr>
+    <th><%= t "name" %></th>
+    <th><%= t "picture" %></th>
+    <th><%= t "price" %></th>
+    <% if current_user.admin? %>
+      <th><%= t "description" %></th>
+      <th><%= t "classify" %></th>
+    <% end %>
+    <th><%= t "approve" %></th>
+    <th colspan="2"><%= t "action" %></th>
+  </tr>
+  <div class="product-container">
+    <% products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td class="index-product"><%= image_tag product.picture %></td>
+        <td><%= product.price %></td>
+        <% if current_user.admin? %>
+          <td><%= product.description %></td>
+          <td><%= product.classify %></td>
+          <td>
+            <%= link_to admin_product_path(product.id,
+              check_suggest: Settings.check_suggest), method: :put,
+              remote: true do %>
+              <% unless product.temp == Settings.accept_text %>
+                <%= product.temp %>
+              <% end %>
+            <% end %>
+          </td>
+          <td><%= link_to t("edit"), edit_admin_product_path(product) %></td>
+        <% else %>
+          <td>
+            <% unless product.temp == Settings.approve_text %>
+              <%= product.temp %>
+            <% end %>
+          </td>
+          <td><%= link_to t("edit"), edit_suggest_path(product) %></td>
+        <% end %>
+        <td>
+          <%= link_to t("delete"), product_path(product), method: :delete,
+            data: {confirm: t("sure")}%>
+        </td>
+      </tr>
+    <% end %>
+  </div>
+</table>

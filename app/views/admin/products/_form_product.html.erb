@@ -21,11 +21,15 @@
         <%= f.select :category_id,
           options_for_select(@categories.collect{|category| [category.name,
           category.id]}), class: "select-form" %><br>
-      <% else %>
+      <% elsif @category.present? %>
         <%= f.select :category_id,
           options_for_select(@categories.collect{|category|
           [category.name, category.id]}, selected: @category.id),
           class: "select-form" %><br />
+      <% else %>
+        <%= f.select :category_id,
+          options_for_select(@categories.collect{|category| [category.name,
+          category.id]}), class: "select-form" %><br>
       <% end %>
 
       <%= f.label :picture %>

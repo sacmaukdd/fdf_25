@@ -1,13 +1,16 @@
-<% products.each do |product| %>
-  <tr>
-    <td><%= product.name %></td>
-    <td class="index-product"><%= image_tag product.picture %></td>
-    <td><%= product.price %></td>
-    <td><%= product.classify %></td>
-    <td><%= link_to t("edit"), edit_admin_product_path(product) %></td>
-    <td>
-      <%= link_to t("delete"), admin_product_path(product), method: :delete,
-        data: {confirm: t("sure")}%>
-    </td>
-  </tr>
+<% if current_user.admin? %>
+  <div class="select">
+    <%= form_tag "/admin/products", method: "get", remote: true,
+      id: :form_suggest do %>
+      <%= select_tag :select,
+        options_for_select([[Settings.all],[Settings.admin],[Settings.suggest]],
+        selected: params[:select]) %>
+    <% end %>
+  </div>
+  <%= link_to t("add_product"), new_admin_product_path, class: "btn btn-primary" %>
+<% else %>
+  <%= link_to t("add_suggest"), new_suggest_path, class: "btn btn-primary" %>
 <% end %>
+<div class="col-md-12" id="after-select">
+  <%= render partial: "admin/products/item", locals: {products: products} %>
+</div>

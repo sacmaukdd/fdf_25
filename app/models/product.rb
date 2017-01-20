@@ -8,4 +8,10 @@ class Product < ApplicationRecord
 
   scope :order_alphabet, -> {order name: :ASC}
   ratyrate_rateable "rate"
+  scope :get_suggest_by_user, -> id_user_suggest do
+    where id_user_suggest: id_user_suggest
+  end
+  scope :get_product_by_admin, -> {where temp: 0}
+  scope :get_product_by_suggest, -> {where temp: 1}
+  enum temp: [:accept, :approve]
 end
